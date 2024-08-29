@@ -68,7 +68,6 @@ ThemeData _buildShrineTheme() {
       selectionColor: kShrinePink100,
     ),
     // Decorate the inputs
-    // TODO: Decorate the inputs (103)
     inputDecorationTheme: const InputDecorationTheme(
       border: CutCornersBorder(),
       focusedBorder: CutCornersBorder(
@@ -80,6 +79,10 @@ ThemeData _buildShrineTheme() {
       floatingLabelStyle: TextStyle(
         color: kShrineBrown900,
       ),
+    ),
+    appBarTheme: const AppBarTheme(
+      foregroundColor: kShrineBrown900,
+      backgroundColor: kShrinePink100,
     ),
   );
 }
