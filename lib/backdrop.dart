@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 import 'model/product.dart';
 
-// TODO: Add velocity constant
+// Add velocity constant
 const double _kFlingVelocity = 2.0;
 
 // Add _FrontLayer class
 class _FrontLayer extends StatelessWidget {
-  // TODO: Add on-tap callback
   const _FrontLayer({
     Key? key,
     this.onTap,
@@ -28,7 +27,6 @@ class _FrontLayer extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          // TODO: Add a GestureDetector (104)
           GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
@@ -77,7 +75,7 @@ class _BackdropTitle extends AnimatedWidget {
           width: 72.0,
           child: IconButton(
             padding: const EdgeInsets.only(right: 8.0),
-            onPressed: this.onPress,
+            onPressed: onPress,
             icon: Stack(children: <Widget>[
               Opacity(
                 opacity: animation.value,
@@ -153,8 +151,6 @@ class Backdrop extends StatefulWidget {
 // Add _BackdropTitle class
 class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
-
-  // TODO: Add AnimationController widget
   late AnimationController _controller;
 
   @override
@@ -167,7 +163,6 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
     );
   }
 
-  // Add override for didUpdateWidget()
   @override
   void didUpdateWidget(Backdrop old) {
     super.didUpdateWidget(old);
@@ -185,7 +180,7 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
     super.dispose();
   }
 
-  // TODO: Add functions to get and change front layer visibility
+  // functions to get and change front layer visibility
   bool get _frontLayerVisible {
     final AnimationStatus status = _controller.status;
     return status == AnimationStatus.completed || status == AnimationStatus.forward;
@@ -195,13 +190,11 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
     _controller.fling(velocity: _frontLayerVisible ? -_kFlingVelocity : _kFlingVelocity);
   }
 
-  // TODO: Add BuildContext and BoxConstraints parameters to _buildStack
   Widget _buildStack(BuildContext context, BoxConstraints constraints) {
     const double layerTitleHeight = 48.0;
     final Size layerSize = constraints.biggest;
     final double layerTop = layerSize.height - layerTitleHeight;
 
-    // TODO: Create a RelativeRectTween Animation
     Animation<RelativeRect> layerAnimation = RelativeRectTween(
       begin: RelativeRect.fromLTRB(0.0, layerTop, 0.0, layerTop - layerSize.height),
       end: const RelativeRect.fromLTRB(0.0, 0.0, 0.0, 0.0),
@@ -210,12 +203,10 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
     return Stack(
       key: _backdropKey,
       children: <Widget>[
-        // TODO: Wrap backLayer in an ExcludeSemantics widget
         ExcludeSemantics(
-          child: widget.backLayer,
           excluding: _frontLayerVisible,
+          child: widget.backLayer,
         ),
-        // TODO: Add a PositionedTransition
         PositionedTransition(
           rect: layerAnimation,
           child: _FrontLayer(
@@ -239,7 +230,6 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
         backTitle: widget.backTitle,
       ),
       actions: <Widget>[
-        // TODO: Add shortcut to login screen from trailing icons
         IconButton(
           icon: const Icon(
             Icons.search,
@@ -254,7 +244,7 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
           },
         ),
         IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.tune,
             semanticLabel: 'filter',
           ),
@@ -270,7 +260,6 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
     );
     return Scaffold(
       appBar: appBar,
-      // TODO: Return a LayoutBuilder widget
       body: LayoutBuilder(builder: _buildStack),
     );
   }
