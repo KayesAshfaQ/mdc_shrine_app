@@ -74,6 +74,9 @@ class _LoginPageState extends State<LoginPage> {
                     _usernameController.clear();
                     _passwordController.clear();
                   },
+                  style: TextButton.styleFrom(
+                    foregroundColor: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
                 ElevatedButton(
                   child: const Text('NEXT'),
@@ -81,6 +84,9 @@ class _LoginPageState extends State<LoginPage> {
                     // Show the next page
                     Navigator.pop(context);
                   },
+                  style: TextButton.styleFrom(
+                    foregroundColor: Theme.of(context).colorScheme.secondary,
+                  ),
                 ),
               ],
             ),
