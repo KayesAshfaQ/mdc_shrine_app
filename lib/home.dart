@@ -25,63 +25,63 @@ class HomePage extends StatelessWidget {
   // TODO: Make a collection of cards
 
 // Replace this entire method
-List<Card> _buildGridCards(BuildContext context) {
-  List<Product> products = ProductsRepository.loadProducts(Category.all);
+  List<Card> _buildGridCards(BuildContext context) {
+    List<Product> products = ProductsRepository.loadProducts(Category.all);
 
-  if (products.isEmpty) {
-    return const <Card>[];
-  }
+    if (products.isEmpty) {
+      return const <Card>[];
+    }
 
-  final ThemeData theme = Theme.of(context);
-  final NumberFormat formatter = NumberFormat.simpleCurrency(
-      locale: Localizations.localeOf(context).toString());
+    final ThemeData theme = Theme.of(context);
+    final NumberFormat formatter = NumberFormat.simpleCurrency(locale: Localizations.localeOf(context).toString());
 
-  return products.map((product) {
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      // TODO: Adjust card heights
-      child: Column(
-        // TODO: Center items on the card
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          AspectRatio(
-            aspectRatio: 18 / 11,
-            child: Image.asset(
-              product.assetName,
-              package: product.assetPackage,
-             // TODO: Adjust the box size
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
-              child: Column(
-               // TODO: Align labels to the bottom and center
-               crossAxisAlignment: CrossAxisAlignment.start,
-                // TODO: Change innermost Column
-                children: <Widget>[
-                 // TODO: Handle overflowing labels
-                 Text(
-                    product.name,
-                    style: theme.textTheme.titleLarge,
-                    maxLines: 1,
-                  ),
-                  const SizedBox(height: 8.0),
-                  Text(
-                    formatter.format(product.price),
-                    style: theme.textTheme.titleSmall,
-                  ),
-                ],
+    return products.map((product) {
+      return Card(
+        clipBehavior: Clip.antiAlias,
+        // TODO: Adjust card heights
+        child: Column(
+          // TODO: Center items on the card
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 18 / 11,
+              child: Image.asset(
+                product.assetName,
+                package: product.assetPackage,
+                // Adjust the box size
+                fit: BoxFit.fitWidth,
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }).toList();
-}
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
+                child: Column(
+                  // TODO: Align labels to the bottom and center
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  // TODO: Change innermost Column
+                  children: <Widget>[
+                    // TODO: Handle overflowing labels
+                    Text(
+                      product.name,
+                      style: theme.textTheme.titleLarge,
+                      maxLines: 1,
+                    ),
+                    const SizedBox(height: 8.0),
+                    Text(
+                      formatter.format(product.price),
+                      style: theme.textTheme.titleSmall,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }).toList();
+  }
 
-    // TODO: Add a variable for Category
+  // TODO: Add a variable for Category
   @override
   Widget build(BuildContext context) {
     // TODO: Return an AsymmetricView
