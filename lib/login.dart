@@ -86,6 +86,8 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   style: TextButton.styleFrom(
                     foregroundColor: Theme.of(context).colorScheme.secondary,
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    elevation: 8.0,
                   ),
                 ),
               ],
