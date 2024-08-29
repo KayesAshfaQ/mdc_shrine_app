@@ -22,9 +22,6 @@ class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   // Make a collection of cards
-  // TODO: Make a collection of cards
-
-// Replace this entire method
   List<Card> _buildGridCards(BuildContext context) {
     List<Product> products = ProductsRepository.loadProducts(Category.all);
 

@@ -14,6 +14,7 @@
 
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
 import 'home.dart';
 import 'login.dart';
 
@@ -35,10 +36,26 @@ class ShrineApp extends StatelessWidget {
         // TODO: Change backLayer field value to CategoryMenuPage
       },
       // TODO: Customize the theme
-      theme: ThemeData.light(useMaterial3: true),
+      theme: _kShrineTheme,
     );
   }
 }
 
-// TODO: Build a Shrine Theme
+// Build a Shrine Theme
+final ThemeData _kShrineTheme = _buildShrineTheme();
+
+ThemeData _buildShrineTheme() {
+  final ThemeData base = ThemeData.light(useMaterial3: true);
+  return base.copyWith(
+    colorScheme: base.colorScheme.copyWith(
+      primary: kShrinePink100,
+      onPrimary: kShrineBrown900,
+      secondary: kShrineBrown900,
+      error: kShrineErrorRed,
+    ),
+    // TODO: Add the text themes (103)
+    // TODO: Decorate the inputs (103)
+  );
+}
+
 // TODO: Build a Shrine Text Theme
