@@ -39,12 +39,15 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Image.asset('assets/diamond.png'),
                 const SizedBox(height: 16.0),
-                const Text('SHRINE'),
+                Text(
+                  'SHRINE',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
               ],
             ),
             const SizedBox(height: 120.0),
             // TODO: Remove filled: true values
-            // TextField widgets 
+            // TextField widgets
             // name
             TextField(
               controller: _usernameController,
@@ -64,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               obscureText: true,
             ),
-            // button bar 
+            // button bar
             OverflowBar(
               alignment: MainAxisAlignment.end,
               children: <Widget>[
