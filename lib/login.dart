@@ -14,6 +14,8 @@
 
 import 'package:flutter/material.dart';
 
+import 'colors.dart';
+
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 
@@ -70,12 +72,14 @@ class _LoginPageState extends State<LoginPage> {
                 TextButton(
                   child: const Text('CANCEL'),
                   onPressed: () {
-                    // Clear the text fields
                     _usernameController.clear();
                     _passwordController.clear();
                   },
                   style: TextButton.styleFrom(
-                    foregroundColor: Theme.of(context).colorScheme.secondary,
+                    foregroundColor: kShrineBrown900,
+                    shape: const BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                    ),
                   ),
                 ),
                 ElevatedButton(
@@ -84,10 +88,13 @@ class _LoginPageState extends State<LoginPage> {
                     // Show the next page
                     Navigator.pop(context);
                   },
-                  style: TextButton.styleFrom(
-                    foregroundColor: Theme.of(context).colorScheme.secondary,
-                    backgroundColor: Theme.of(context).colorScheme.primary,
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: kShrineBrown900,
+                    backgroundColor: kShrinePink100,
                     elevation: 8.0,
+                    shape: const BeveledRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                    ),
                   ),
                 ),
               ],
