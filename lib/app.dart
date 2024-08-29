@@ -22,7 +22,7 @@ import 'login.dart';
 import 'model/product.dart';
 import 'supplemental/cut_corners_border.dart';
 
-// TODO: Convert ShrineApp to stateful widget
+// Convert ShrineApp to stateful widget
 class ShrineApp extends StatefulWidget {
   const ShrineApp({Key? key}) : super(key: key);
 
@@ -46,13 +46,13 @@ class _ShrineAppState extends State<ShrineApp> {
       initialRoute: '/login',
       routes: {
         '/login': (BuildContext context) => const LoginPage(),
-        // TODO: Change to a Backdrop with a HomePage frontLayer
+        // Change to a Backdrop with a HomePage frontLayer
         '/': (BuildContext context) => Backdrop(
-              // TODO: Make currentCategory field take _currentCategory (104)
+              // Make currentCategory field take _currentCategory
               currentCategory: _currentCategory,
-              // TODO: Pass _currentCategory for frontLayer (104)
-              frontLayer: HomePage(),
-              // TODO: Change backLayer field value to CategoryMenuPage (104)
+              // Pass _currentCategory for frontLayer
+              frontLayer: HomePage(category: _currentCategory),
+              // Change backLayer field value to CategoryMenuPage
               backLayer: CategoryMenuPage(
                 currentCategory: _currentCategory,
                 onCategoryTap: _onCategoryTap,
@@ -61,7 +61,7 @@ class _ShrineAppState extends State<ShrineApp> {
               backTitle: const Text('MENU'),
             ),
       },
-      // TODO: Customize the theme
+      // Customize the theme
       theme: _kShrineTheme,
     );
   }
@@ -104,7 +104,7 @@ ThemeData _buildShrineTheme() {
   );
 }
 
-// TODO: Build a Shrine Text Theme
+// Build a Shrine Text Theme
 TextTheme _buildShrineTextTheme(TextTheme base) {
   return base
       .copyWith(
