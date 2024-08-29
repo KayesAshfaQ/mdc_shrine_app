@@ -22,7 +22,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  // text editing controllers (101)
+  // text editing controllers
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
 
@@ -44,7 +44,7 @@ class _LoginPageState extends State<LoginPage> {
             ),
             const SizedBox(height: 120.0),
             // TODO: Remove filled: true values
-            // TextField widgets (101)
+            // TextField widgets 
             // name
             TextField(
               controller: _usernameController,

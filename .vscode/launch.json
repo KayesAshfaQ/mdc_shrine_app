@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "mdc_shrine_app",
+            "name": "shrine",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "mdc_shrine_app (profile mode)",
+            "name": "shrine (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "mdc_shrine_app (release mode)",
+            "name": "shrine (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"
