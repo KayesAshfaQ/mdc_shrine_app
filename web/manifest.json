@@ -1,6 +1,6 @@
 {
-    "name": "mdc_shrine_app",
-    "short_name": "mdc_shrine_app",
+    "name": "shrine",
+    "short_name": "shrine",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

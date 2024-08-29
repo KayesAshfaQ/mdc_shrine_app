@@ -1,4 +1,4 @@
-package com.example.mdc_shrine_app
+package com.solobit.shrine
 
 import io.flutter.embedding.android.FlutterActivity
 
