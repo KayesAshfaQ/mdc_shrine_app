@@ -90,20 +90,34 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
     _controller.fling(velocity: _frontLayerVisible ? -_kFlingVelocity : _kFlingVelocity);
   }
 
-  Widget _buildStack() {
+  // TODO: Add BuildContext and BoxConstraints parameters to _buildStack
+  Widget _buildStack(BuildContext context, BoxConstraints constraints) {
+    const double layerTitleHeight = 48.0;
+    final Size layerSize = constraints.biggest;
+    final double layerTop = layerSize.height - layerTitleHeight;
+
     // TODO: Create a RelativeRectTween Animation
+    Animation<RelativeRect> layerAnimation = RelativeRectTween(
+      begin: RelativeRect.fromLTRB(0.0, layerTop, 0.0, layerTop - layerSize.height),
+      end: const RelativeRect.fromLTRB(0.0, 0.0, 0.0, 0.0),
+    ).animate(_controller.view);
 
     return Stack(
       key: _backdropKey,
       children: <Widget>[
-        // Wrap backLayer in an ExcludeSemantics widget
+        // TODO: Wrap backLayer in an ExcludeSemantics widget
         ExcludeSemantics(
           child: widget.backLayer,
           excluding: _frontLayerVisible,
         ),
         // TODO: Add a PositionedTransition
-        // TODO: Wrap front layer in _FrontLayer
-        _FrontLayer(child: widget.frontLayer),
+        PositionedTransition(
+          rect: layerAnimation,
+          child: _FrontLayer(
+            // TODO: Implement onTap property on _BackdropState
+            child: widget.frontLayer,
+          ),
+        ),
       ],
     );
   }
@@ -117,7 +131,12 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
       // TODO: Remove leading property
 
       // Create title with _BackdropTitle parameter
-      leading: Icon(Icons.menu),
+      // Replace leading menu icon with IconButton
+      leading: IconButton(
+        icon: const Icon(Icons.menu),
+        onPressed: _toggleBackdropLayerVisibility,
+      ),
+
       title: Text('SHRINE'),
       actions: <Widget>[
         // TODO: Add shortcut to login screen from trailing icons
@@ -144,7 +163,7 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
     return Scaffold(
       appBar: appBar,
       // TODO: Return a LayoutBuilder widget
-      body: _buildStack(),
+      body: LayoutBuilder(builder: _buildStack),
     );
   }
 }
