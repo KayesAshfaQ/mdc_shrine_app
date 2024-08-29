@@ -13,44 +13,75 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+
+import 'model/product.dart';
+import 'model/products_repository.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   // Make a collection of cards
-  List<Card> _buildGridCards(int count) {
-    List<Card> cards = List.generate(
-      count,
-      (int index) {
-        return Card(
-          clipBehavior: Clip.antiAlias,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              AspectRatio(
-                aspectRatio: 18.0 / 11.0,
-                child: Image.asset('assets/diamond.png'),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text('Title'),
-                    SizedBox(height: 8.0),
-                    Text('Secondary Text'),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        );
-      },
-    );
-    return cards;
+  // TODO: Make a collection of cards
+
+// Replace this entire method
+List<Card> _buildGridCards(BuildContext context) {
+  List<Product> products = ProductsRepository.loadProducts(Category.all);
+
+  if (products.isEmpty) {
+    return const <Card>[];
   }
 
-  // TODO: Add a variable for Category
+  final ThemeData theme = Theme.of(context);
+  final NumberFormat formatter = NumberFormat.simpleCurrency(
+      locale: Localizations.localeOf(context).toString());
+
+  return products.map((product) {
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      // TODO: Adjust card heights
+      child: Column(
+        // TODO: Center items on the card
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          AspectRatio(
+            aspectRatio: 18 / 11,
+            child: Image.asset(
+              product.assetName,
+              package: product.assetPackage,
+             // TODO: Adjust the box size
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 8.0),
+              child: Column(
+               // TODO: Align labels to the bottom and center
+               crossAxisAlignment: CrossAxisAlignment.start,
+                // TODO: Change innermost Column
+                children: <Widget>[
+                 // TODO: Handle overflowing labels
+                 Text(
+                    product.name,
+                    style: theme.textTheme.titleLarge,
+                    maxLines: 1,
+                  ),
+                  const SizedBox(height: 8.0),
+                  Text(
+                    formatter.format(product.price),
+                    style: theme.textTheme.titleSmall,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }).toList();
+}
+
+    // TODO: Add a variable for Category
   @override
   Widget build(BuildContext context) {
     // TODO: Return an AsymmetricView
@@ -98,7 +129,7 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         childAspectRatio: 8.0 / 9.0,
         // Build a grid of cards
-        children: _buildGridCards(10),
+        children: _buildGridCards(context),
       ),
 
       // TODO: Set resizeToAvoidBottomInset

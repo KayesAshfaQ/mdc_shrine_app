@@ -64,14 +64,14 @@ class _LoginPageState extends State<LoginPage> {
               ),
               obscureText: true,
             ),
-            // button bar (101)
+            // button bar 
             OverflowBar(
               alignment: MainAxisAlignment.end,
               children: <Widget>[
                 TextButton(
                   child: const Text('CANCEL'),
                   onPressed: () {
-                    // Clear the text fields (101)
+                    // Clear the text fields
                     _usernameController.clear();
                     _passwordController.clear();
                   },
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                   child: const Text('NEXT'),
                   onPressed: () {
-                    // Show the next page (101)
+                    // Show the next page
                     Navigator.pop(context);
                   },
                 ),

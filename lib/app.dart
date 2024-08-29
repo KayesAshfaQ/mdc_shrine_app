@@ -34,11 +34,11 @@ class ShrineApp extends StatelessWidget {
         // TODO: Pass _currentCategory for frontLayer
         // TODO: Change backLayer field value to CategoryMenuPage
       },
-      // TODO: Customize the theme (103)
+      // TODO: Customize the theme
       theme: ThemeData.light(useMaterial3: true),
     );
   }
 }
 
-// TODO: Build a Shrine Theme (103)
-// TODO: Build a Shrine Text Theme (103)
+// TODO: Build a Shrine Theme
+// TODO: Build a Shrine Text Theme
