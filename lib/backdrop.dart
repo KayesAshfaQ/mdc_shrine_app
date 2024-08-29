@@ -24,7 +24,7 @@ class Backdrop extends StatefulWidget {
   _BackdropState createState() => _BackdropState();
 }
 
-// TODO: Add _FrontLayer class
+// Add _FrontLayer class
 class _FrontLayer extends StatelessWidget {
   // TODO: Add on-tap callback
   const _FrontLayer({
@@ -54,22 +54,23 @@ class _FrontLayer extends StatelessWidget {
   }
 }
 
-// TODO: Add _BackdropTitle class
-
-// TODO: Add _BackdropState class
+// Add _BackdropTitle class
 class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
 
   // TODO: Add AnimationController widget
 
-  // TODO: Add BuildContext and BoxConstraints parameters to _buildStack
   Widget _buildStack() {
+    // TODO: Create a RelativeRectTween Animation
+
     return Stack(
       key: _backdropKey,
       children: <Widget>[
         // TODO: Wrap backLayer in an ExcludeSemantics widget
         widget.backLayer,
-        widget.frontLayer,
+        // TODO: Add a PositionedTransition
+        // TODO: Wrap front layer in _FrontLayer
+        _FrontLayer(child: widget.frontLayer),
       ],
     );
   }
