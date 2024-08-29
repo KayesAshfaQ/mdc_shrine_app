@@ -60,10 +60,15 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      // TODO: Add a grid view
-      body: const Center(
-        child: Text('You did it!'),
+      // grid view
+      body: GridView.count(
+        crossAxisCount: 2,
+        padding: const EdgeInsets.all(16.0),
+        childAspectRatio: 8.0 / 9.0,
+        // TODO: Build a grid of cards (102)
+        children: <Widget>[Card()],
       ),
+
       // TODO: Set resizeToAvoidBottomInset
     );
   }
