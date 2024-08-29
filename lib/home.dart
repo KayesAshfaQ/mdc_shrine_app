@@ -13,7 +13,6 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 import 'model/product.dart';
 import 'model/products_repository.dart';
@@ -25,49 +24,10 @@ class HomePage extends StatelessWidget {
   // TODO: Add a variable for Category
   @override
   Widget build(BuildContext context) {
-    // TODO: Return an AsymmetricView
-    // TODO: Pass Category variable to AsymmetricView
-    return Scaffold(
-      // Add app bar
-      appBar: AppBar(
-        // buttons and title
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-            semanticLabel: 'menu',
-          ),
-          onPressed: () {
-            print('Menu button');
-          },
-        ),
-        title: const Text('SHRINE'),
-
-        // trailing buttons
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(
-              Icons.search,
-              semanticLabel: 'search',
-            ),
-            onPressed: () {
-              print('Search button');
-            },
-          ),
-          IconButton(
-            icon: const Icon(
-              Icons.tune,
-              semanticLabel: 'filter',
-            ),
-            onPressed: () {
-              print('Filter button');
-            },
-          ),
-        ],
-      ),
-      // Add a grid view
-      body: AsymmetricView(
-        products: ProductsRepository.loadProducts(Category.all),
-      ),
+    // Return an AsymmetricView
+    // Pass Category variable to AsymmetricView
+    return AsymmetricView(
+      products: ProductsRepository.loadProducts(Category.all),
 
       // TODO: Set resizeToAvoidBottomInset
     );
