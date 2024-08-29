@@ -19,15 +19,16 @@ import 'model/products_repository.dart';
 import 'supplemental/asymmetric_view.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final Category category;
 
-  // TODO: Add a variable for Category
+  const HomePage({this.category = Category.all, Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     // Return an AsymmetricView
     // Pass Category variable to AsymmetricView
     return AsymmetricView(
-      products: ProductsRepository.loadProducts(Category.all),
+      products: ProductsRepository.loadProducts(category),
 
       // TODO: Set resizeToAvoidBottomInset
     );
