@@ -56,7 +56,6 @@ class _LoginPageState extends State<LoginPage> {
               alignment: MainAxisAlignment.end,
               children: <Widget>[
                 TextButton(
-                  child: const Text('CANCEL'),
                   onPressed: () {
                     _usernameController.clear();
                     _passwordController.clear();
@@ -67,9 +66,9 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.all(Radius.circular(7.0)),
                     ),
                   ),
+                  child: const Text('CANCEL'),
                 ),
                 ElevatedButton(
-                  child: const Text('NEXT'),
                   onPressed: () {
                     // Show the next page
                     Navigator.pop(context);
@@ -82,6 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.all(Radius.circular(7.0)),
                     ),
                   ),
+                  child: const Text('NEXT'),
                 ),
               ],
             ),
