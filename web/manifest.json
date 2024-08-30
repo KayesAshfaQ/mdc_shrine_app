@@ -1,6 +1,6 @@
 {
-    "name": "shrine",
-    "short_name": "shrine",
+    "name": "Shrine",
+    "short_name": "Shrine",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
