@@ -196,7 +196,7 @@ class _BackdropState extends State<Backdrop> with SingleTickerProviderStateMixin
     final double layerTop = layerSize.height - layerTitleHeight;
 
     Animation<RelativeRect> layerAnimation = RelativeRectTween(
-      begin: RelativeRect.fromLTRB(0.0, layerTop, 0.0, layerTop - layerSize.height),
+      begin: RelativeRect.fromLTRB(0.0, layerTop, 0.0, -layerTop),
       end: const RelativeRect.fromLTRB(0.0, 0.0, 0.0, 0.0),
     ).animate(_controller.view);
 

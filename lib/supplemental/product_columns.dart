@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
 import '../model/product.dart';
@@ -32,9 +34,9 @@ class TwoProductCardColumn extends StatelessWidget {
     return LayoutBuilder(builder: (BuildContext context, BoxConstraints constraints) {
       const spacerHeight = 44.0;
 
-      double heightOfCards = (constraints.biggest.height - spacerHeight) / 2.0;
-      double heightOfImages = heightOfCards - ProductCard.kTextBoxHeight;
-      double imageAspectRatio = heightOfImages >= 0.0 ? constraints.biggest.width / heightOfImages : 49.0 / 33.0;
+      double heightOfCards = math.max(0.0, (constraints.biggest.height - spacerHeight) / 2.0);
+      double heightOfImages = math.max(0.0, heightOfCards - ProductCard.kTextBoxHeight);
+      double imageAspectRatio = heightOfImages > 0.0 ? constraints.biggest.width / heightOfImages : 49.0 / 33.0;
 
       return ListView(
         physics: const ClampingScrollPhysics(),
